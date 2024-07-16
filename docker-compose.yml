@@ -18,38 +18,18 @@ services:
       - "--character-set-server=utf8mb4"
       - "--collation-server=utf8mb4_unicode_ci"
 
-  grida-sso-app:
+  grida-core-api:
     depends_on:
       - database
-    image: wwan13/grida-sso-app:prod
-    container_name: grida-sso-app
-    ports:
-      - "8070:8070"
-    restart: always
-    env_file:
-      - "./.env"
-
-  grida-end-user-app:
-    depends_on:
-      - database
-    image: wwan13/grida-end-user-app:prod
-    container_name: grida-end-user-app
+    image: wwan13/grida-core-api:prod
+    container_name: grida-core-api
     ports:
       - "8080:8080"
     restart: always
     env_file:
       - "./.env"
-
-  grida-trial-user-app:
-    depends_on:
+    links:
       - database
-    image: wwan13/grida-trial-user-app:prod
-    container_name: grida-trial-user-app
-    ports:
-      - "8090:8090"
-    restart: always
-    env_file:
-      - "./.env"
 
   nginx:
     image: nginx:1.15-alpine
