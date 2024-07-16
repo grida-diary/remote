@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(gridadiary.site)
+domains=(grida.today, monitoring.grida.today)
 rsa_key_size=4096
 data_path="./nginx/certbot"
 email="wwan13@naver.com"
