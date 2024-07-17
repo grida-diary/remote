@@ -5,11 +5,11 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(grida.today, monitoring.grida.today)
+domains=(grida.today)
 rsa_key_size=4096
 data_path="./nginx/certbot"
 email="wwan13@naver.com"
-staging=0
+staging=1
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
