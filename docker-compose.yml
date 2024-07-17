@@ -58,7 +58,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+       - ./monitoring/prometheus:/etc/prometheus
   
   grafana:
     image: grafana/grafana:latest
