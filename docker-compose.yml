@@ -30,6 +30,8 @@ services:
       - "./.env"
     links:
       - database
+    volumes:
+      - /home/ubuntu/remote/log:/log
 
   nginx:
     image: nginx:1.15-alpine
