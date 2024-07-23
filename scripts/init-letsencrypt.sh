@@ -7,7 +7,7 @@ fi
 
 domains=(grida.today)
 rsa_key_size=4096
-data_path="./nginx/certbot"
+data_path="../nginx/certbot"
 email="wwan13@naver.com"
 staging=0
 
