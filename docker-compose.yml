@@ -1,5 +1,38 @@
 version: "3"
 services:
+  database:
+    image: mysql/mysql-server:5.7
+    container_name: grida-database
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      TZ: 'Asia/Seoul'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command:
+      - "mysqld"
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+
+  grida-core-api:
+    depends_on:
+      - database
+    image: wwan13/grida-core-api:prod
+    container_name: grida-core-api
+    ports:
+      - "8080:8080"
+    restart: always
+    env_file:
+      - "./.env"
+    links:
+      - database
+    volumes:
+      - /home/ubuntu/remote/log:/log
+
   nginx:
     image: nginx:1.15-alpine
     restart: unless-stopped
@@ -55,3 +88,4 @@ services:
 
 volumes: 
   grafana-data:
+  mysql-data:
