@@ -23,8 +23,6 @@ services:
       - database
     image: wwan13/grida-core-api:prod
     container_name: grida-core-api
-    environment:
-    - SPRING_PROFILES_ACTIVE: prod
     ports:
       - "8080:8080"
     restart: always
