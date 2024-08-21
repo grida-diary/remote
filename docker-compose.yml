@@ -24,7 +24,7 @@ services:
     image: wwan13/grida-core-api:prod
     container_name: grida-core-api
     environment:
-    - JAVA_OPTS=-Dspring.profiles.active=prod
+    - SPRING_PROFILES_ACTIVE: prod
     ports:
       - "8080:8080"
     restart: always
