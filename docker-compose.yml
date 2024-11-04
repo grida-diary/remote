@@ -45,7 +45,7 @@ services:
     env_file:
       - "./.env.client"
     links:
-      - core-api
+      - grida-core-api
 
   nginx:
     image: nginx:1.15-alpine
