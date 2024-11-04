@@ -34,18 +34,18 @@ services:
     volumes:
       - /home/ubuntu/remote/log:/log
   
-    client:
-      depends_on:
-        - core-api
-      image: wwan13/grida-client:prod
-      container_name: client
-      ports:
-        - "3010:3010"
-      restart: always
-      env_file:
-        - "./.env.client"
-      links:
-        - core-api
+  client:
+    depends_on:
+      - grida-core-api
+    image: wwan13/grida-client:prod
+    container_name: client
+    ports:
+      - "3010:3010"
+    restart: always
+    env_file:
+      - "./.env.client"
+    links:
+      - core-api
 
   nginx:
     image: nginx:1.15-alpine
